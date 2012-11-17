@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     (r'^$', views.index),
     (r'^loop/(\d+)/$', views.loop),
     (r'^menu/$', views.menu),
+    (r'^bump/$', views.bump),
     # api
     (r'^api/', include(member_resource.urls)),
 

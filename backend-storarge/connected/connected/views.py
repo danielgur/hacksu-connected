@@ -12,6 +12,5 @@ def loop(request, member_id):
 def menu(request):
     return render_to_response('app_connected/menu.html')
 
-
-
-
+def bump(request):
+    return render_to_response('app_connected/bump.html')
