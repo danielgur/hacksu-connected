@@ -5,10 +5,6 @@ sockets = [];
 var DEBUG = true;
 // we need to limit it to a time
 io.sockets.on('connection', function (socket) {
-  // add the socker
-  // sockets.push(socket);
-
-  //socket.emit('news', { hello: 'world', key:'value' });
 
   socket.on('init', function (data) {
     if(DEBUG){
@@ -27,8 +23,10 @@ io.sockets.on('connection', function (socket) {
     // now lets look for a match and then
     for (var i = 0; i < sockets.length; i++) {
       var diff = distance(sockets[i]._lat, sockets[i]._lon,socket._lat, socket._lon);
-      if (diff<100){
-        console.log("*\n*\n"+diff+"\n");
+      // 1 km
+      if (diff<1){
+        if(DEBUG)
+          console.log("*\n*\n"+diff+"\n");
         socket.emit('found', { id:sockets[i]._id});
         match = true;
         socket.disconnect();
