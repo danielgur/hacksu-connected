@@ -13,7 +13,7 @@ class Member(models.Model):
     twitter = models.CharField(max_length=100, blank=True)
     facebook = models.CharField(max_length=100, blank=True)
     bio = models.CharField(max_length=200, blank=True)
-    loop = models.ManyToManyField('self')
+    loop = models.ManyToManyField('self', blank=True)
     def __unicode__(self):
         return self.name
 
