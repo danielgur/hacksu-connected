@@ -12,5 +12,13 @@ def loop(request, member_id):
 def menu(request):
     return render_to_response('app_connected/menu.html')
 
+<<<<<<< HEAD
 def bump(request):
     return render_to_response('app_connected/bump.html')
+=======
+def myinfo(request, member_id):
+    me = Member.objects.get(id=member_id)
+    return render_to_response('app_connected/myinfo.html', {'me':me})
+
+
+>>>>>>> Front end django pages

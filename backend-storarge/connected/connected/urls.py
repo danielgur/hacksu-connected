@@ -19,7 +19,12 @@ urlpatterns = patterns('',
     (r'^$', views.index),
     (r'^loop/(\d+)/$', views.loop),
     (r'^menu/$', views.menu),
+<<<<<<< HEAD
     (r'^bump/$', views.bump),
+=======
+    (r'^myinfo/(\d+)/$', views.myinfo),
+
+>>>>>>> Front end django pages
     # api
     (r'^api/', include(member_resource.urls)),
 
