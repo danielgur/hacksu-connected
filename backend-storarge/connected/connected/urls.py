@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from app_connected.api import MemberResource
-
+from connected import views
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,6 +16,9 @@ urlpatterns = patterns('',
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
+    (r'^$', views.index),
+    (r'^loop/(\d+)/$', views.loop),
+    (r'^menu/$', views.menu),
     # api
     (r'^api/', include(member_resource.urls)),
 

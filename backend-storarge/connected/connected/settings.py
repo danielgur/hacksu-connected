@@ -15,17 +15,12 @@ MANAGERS = ADMINS
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
-if bool(os.environ.get('LOCAL_DEV', False)):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(SITE_ROOT, 'database.db'),
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(SITE_ROOT, 'database.db'),
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
