@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
 	<meta name="MobileOptimized" content="320">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    <script>
+    var socket = io.connect('http://localhost:8080');
+    socket.on('result', function (data) {
+      $("#tag").append(data.key);
 
-    <title>LOOP</title>
+    });
+
+     socket.on('result', function (data) {
+      $("#tag").append(data.key);
+
+    });
+
+    function send(lon, lat, time){
+      socket.emit('init',{
+          lon:,
+          lat:,
+          time:,
+          id:"3"
+
+      });
+
+    }
+	</script>
+	<title>LOOP</title>
 </head>
-<body class=" hasGoogleVoiceExt">
-    <div id="main">
+<body>
+    <div>
 		<p id="userLocation">...placeholder...</p>
-		<button onclick="getLocation()">GetLocation</button>
+		<button id="findUsers" onclick="getLocation()">find users around you</button>
+		<button onclick="submit()">Send data</button>
     </div>
 		<script>
 		var x=document.getElementById("userLocation");
@@ -23,15 +48,23 @@
 				  else{x.innerHTML="Geolocation is not supported by this browser.";}
 				  }
 				function showPosition(position)
-				  {
-				  x.innerHTML="Latitude: " + position.coords.latitude + 
-				  "<br>Longitude: " + position.coords.longitude+
-				  "<br>accuracy: " + position.coords.accuracy +
-				  "<br>timestamp: " + position.timestamp;	
-				  }
+				{
+					x.innerHTML="Latitude: " + position.coords.latitude + 
+					"<br>Longitude: " + position.coords.longitude+
+					"<br>timestamp: " + position.timestamp;
+					latitude = position.coords.latitude;
+					longitude = position.coords.longitude;
+					timestamp = position.timestamp;
+					send(longitude, latitude, timestamp);
+				}
+				
+				function submit(){
+					x.innerHTML="data sent";
+				}
 		</script>
     <script src="./Zepto onShake_files/zepto.js"></script>
     <script src="./Zepto onShake_files/zepto.onshake.js"></script>
-    <script src="./Zepto onShake_files/script.js"></script>
+    <script src="./Zepto onShake_files/script.js"></script> 
+
 </body>
 </html>
