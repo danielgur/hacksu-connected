@@ -2,6 +2,7 @@ var io = require('socket.io').listen(8080);
 
 sockets = [];
 
+var DEBUG = true;
 // we need to limit it to a time
 io.sockets.on('connection', function (socket) {
   // add the socker
@@ -10,27 +11,42 @@ io.sockets.on('connection', function (socket) {
   //socket.emit('news', { hello: 'world', key:'value' });
 
   socket.on('init', function (data) {
-    console.log(data.lon);
-    console.log(data.lat);
-    console.log(data.time);
-    console.log(data.id);
+    if(DEBUG){
+      console.log(data.lon);
+      console.log(data.lat);
+      console.log(data.time);
+      console.log(data.id);
+    }
 
     socket._lon = data.lon;
     socket._lat = data.lat;
     socket._time = data.time;
     socket._id = data.id;
 
-    sockets.push(socket);
-
+    var match = false;
     // now lets look for a match and then
-    socket.emit('result', { hello: 'world', key:'value' });
-
-    socket.emit('result', { hello: 'world', key:'value' });
+    for (var i = 0; i < sockets.length; i++) {
+      var diff = distance(sockets[i]._lat, sockets[i]._lon,socket._lat, socket._lon);
+      if (diff<100){
+        console.log("*\n*\n"+diff+"\n");
+        socket.emit('found', { id:sockets[i]._id});
+        match = true;
+        socket.disconnect();
+        break;
+      }
+    }
+    if (!match){
+      socket.emit('looking', { key:"no-match"});
+      sockets.push(socket);
+    }
 
   });
+
   socket.on('disconnect', function () {
     // remove the socket
-    //
+    var i = sockets.indexOf(socket);
+    console.log(sockets[i] + " is gone away!");
+    sockets.splice(i, 1);
     io.sockets.emit('user disconnected');
   });
 
