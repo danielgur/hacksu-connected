@@ -6,7 +6,7 @@ def index(request):
     return render_to_response('app_connected/index.html')
 
 def login(request):
-     m = Member.objects.get(username=request.POST['username'])
+     m = Login.objects.get(username=request.POST['username'])
      if m.password == request.POST['password']:
         request.session['member_id'] = m.id
         return render_to_response('app_connected/menu.html')
