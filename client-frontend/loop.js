@@ -1,10 +1,9 @@
 function getLoop() {
-  alert("made it");
 	$.ajax({
 		type: 'GET',
-		url: 'http://131.123.87.121:8000/api/member/' + member_id + '/?format=jsonp',
-		datatype: 'json',
-		contentType: 'application/json',
+		url: 'http://morning-earth-5099.herokuapp.com/api/member/'+ member_id + '/?format=jsonp',
+		datatype: 'jsonp',
+		contentType: 'application/jsonp',
 		success: function(data) {
       alert(data);
 		}
