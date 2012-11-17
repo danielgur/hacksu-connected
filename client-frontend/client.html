@@ -6,7 +6,7 @@
 
   <script>
     var socket = io.connect('http://localhost:8080');
-    socket.on('news', function (data) {
+    socket.on('result', function (data) {
       $("#tag").append(data.key);
 
     });
@@ -17,7 +17,13 @@
     });
 
     function send(){
-      socket.emit('my other event', { my: 'data' });
+      socket.emit('init',{
+          lon:"41.04423",
+          lat:"-81.3243",
+          time:"21439249325",
+          id:"3"
+
+      });
 
     }
   </script>

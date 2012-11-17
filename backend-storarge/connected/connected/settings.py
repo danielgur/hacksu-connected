@@ -14,7 +14,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
-'''
+
 if bool(os.environ.get('LOCAL_DEV', False)):
     DATABASES = {
         'default': {
@@ -24,10 +24,6 @@ if bool(os.environ.get('LOCAL_DEV', False)):
     }
 else:
     DATABASES = {
-        'default': dj_database_url.config(default='postgres://localhost')
-    }
-'''
-DATABASES = {
         'default': dj_database_url.config(default='postgres://localhost')
     }
 
