@@ -1,0 +1,35 @@
+<html>
+<head>
+
+  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+  <script>
+    var socket = io.connect('http://localhost:8080');
+    socket.on('news', function (data) {
+      $("#tag").append(data.key);
+
+    });
+
+     socket.on('result', function (data) {
+      $("#tag").append(data.key);
+
+    });
+
+    function send(){
+      socket.emit('my other event', { my: 'data' });
+
+    }
+  </script>
+
+
+</head>
+
+<body>
+
+  <div id="tag"></div>
+  <button onclick="send()">click me</button>
+</body>
+
+
+</html>
