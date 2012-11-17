@@ -29,3 +29,8 @@ def logout(request):
     except KeyError:
         pass
     return HttpResponse("You're logged out.")
+
+def myinfo(request, member_id):
+    me = Member.objects.get(id=member_id)
+    return render_to_response('app_connected/myinfo.html', {'me':me})
+
