@@ -1,4 +1,5 @@
 from django.template import RequestContext
+from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 from app_connected.models import Member, Login
 
@@ -6,12 +7,14 @@ def index(request):
     return render_to_response('app_connected/login.html')
 
 def login(request):
+     c = {}
+     c.update(csrf(request))
      m = Login.objects.get(username=request.POST['username'])
      if m.password == request.POST['password']:
         request.session['member_id'] = m.id
-        return render_to_response('app_connected/menu.html')
+        return render_to_response('app_connected/menu.html', c)
      else:
-        return HttpResponse("Your username and password didn't match.")
+        return render_to_response('app_connected/login.html', c)
 
 def loop(request, member_id):
     members = Member.objects.get(id=request.session['member_id'])

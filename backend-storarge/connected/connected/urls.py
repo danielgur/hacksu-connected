@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^menu/$', views.menu),
     (r'^bump/$', views.bump),
     (r'^myinfo/(\d+)/$', views.myinfo),
+    (r'^login/$', views.login),
 
     # api
     (r'^api/', include(member_resource.urls)),

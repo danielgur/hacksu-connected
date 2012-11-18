@@ -16,18 +16,16 @@
 			</div>
 			<div data-role="content">
 				<div data-role="controlgroup">
-   				<form action="/login/" method="POST"> 
+   				<form action="/login/" method="POST" data-ajax="false" > {% csrf_token %}
 					<label for="basic">Username:</label>
     				<input type="text" name="username" id="username" value=""  />
     				<label for="basic">Password:</label>
     				<input type="password" name="password" id="password" value=""  />
-    				<input type="submit" value="Login" onclick="show();"/>
+    				<input type="submit" value="Login" />
     			</form>
     			</div>
     		</div>
 		</div>
 	</body>
-	<script>
-		function show(){alert("fuck");}
-	</script>
+
 </html>
