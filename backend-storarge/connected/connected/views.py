@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from app_connected.models import Member, Login
 
 def index(request):
-    return render_to_response('app_connected/index.html')
+    return render_to_response('app_connected/login.html')
 
 def login(request):
      m = Login.objects.get(username=request.POST['username'])
