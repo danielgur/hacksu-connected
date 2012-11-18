@@ -18,6 +18,8 @@
 			<div data-role="content">
 				<div data-role="controlgroup">
 					<h1>Bump now!</h1>
+					
+					<button onClick="send(1,2,3)">Click if you have no motion sensor</button>
 
 				</div>
 			</div>
@@ -27,9 +29,9 @@
 	<script src="/static/js/zepto.onshake.js"></script>
 	<script src="/static/js/data_handler.js"></script>
 	<script src="/static/js/script.js"></script>
-	<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+	<script src="http://danielgur.node-server.jit.su:80/socket.io/socket.io.js"></script>
 	<script>
-		var socket = io.connect('http://localhost:8080/socket.io/socket.io.js');
+		var socket = io.connect('http://danielgur.node-server.jit.su:80/socket.io/socket.io.js');
 
 		socket.on('found', function(data) {
 			alert("matched");
@@ -45,7 +47,7 @@
 			lon:lon,
 			lat:lat,
 			time:time,
-			id:"{{ member_id }}"
+			id:1
 
 			});
 		}
