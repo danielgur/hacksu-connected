@@ -42,11 +42,12 @@
 
 		});
 
-		function send(lon, lat, time) {
+		function send(_lon, _lat, _time) {
+			alert("send");
 			socket.emit('init',{
-			lon:lon,
-			lat:lat,
-			time:time,
+			lon:_lon,
+			lat:_lat,
+			time:_time,
 			id:1
 
 			});

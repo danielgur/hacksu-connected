@@ -1,0 +1,6 @@
+*.pot
+*.pyc
+.DS_Store
+local_settings.py
+.project
+.pydevproject
