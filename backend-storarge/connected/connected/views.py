@@ -24,7 +24,7 @@ def menu(request):
     return render_to_response('app_connected/menu.html')
 
 def bump(request):
-    return render_to_response('app_connected/bump.html', {"member_id":request.session['member_id']})
+    return render_to_response('app_connected/bump.html', {"member_id":1})
 
 def logout(request):
     try:

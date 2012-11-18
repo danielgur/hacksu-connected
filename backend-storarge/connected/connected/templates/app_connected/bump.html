@@ -3,7 +3,7 @@
 	<head>
 		<title>Bump.</title>
 		<meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
 	</head>
@@ -12,15 +12,44 @@
 		<div data-role="page" id="login" data-theme="c">
 			<div data-role="header">
 				<div style="text-align:center;">
-					<img src="/static/img/LoopHeader2.png" />
+					<img src="/static/img/LoopHeader2.png" style="max-width:100%"/>
 				</div>
 			</div>
 			<div data-role="content">
-        <div data-role="controlgroup">
-          <h1>Bump now!</h1>
-        </div>
-    		</div>
+				<div data-role="controlgroup">
+					<h1>Bump now!</h1>
+
+				</div>
+			</div>
 		</div>
-			</body>
+	</body>
+	<script src="/static/js/zepto.js"></script>
+	<script src="/static/js/zepto.onshake.js"></script>
+	<script src="/static/js/data_handler.js"></script>
+	<script src="/static/js/script.js"></script>
+	<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:8080/socket.io/socket.io.js');
+
+		socket.on('found', function(data) {
+			alert("matched");
+
+		});
+		socket.on('looking', function(data) {
+			alert("not-matched");
+
+		});
+
+		function send(lon, lat, time) {
+			socket.emit('init',{
+			lon:lon,
+			lat:lat,
+			time:time,
+			id:"{{ member_id }}"
+
+			});
+		}
+
+	</script>
 </html>
 
