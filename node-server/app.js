@@ -34,7 +34,8 @@ io.sockets.on('connection', function (socket) {
       }
     }
     if (!match){
-      console.log("no match");
+      if(DEBUG)
+        console.log("no match");
       socket.emit('looking', { key:"no-match"});
       sockets.push(socket);
     }

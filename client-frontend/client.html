@@ -1,11 +1,11 @@
 <html>
 <head>
 
-  <script src="http://localhost:8080/socket.io/socket.io.js"></script>
+  <script src="http://localhost:8082/socket.io/socket.io.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 
   <script>
-    var socket = io.connect('http://localhost:8080');
+    var socket = io.connect('http://localhost:8082');
     socket.on('result', function (data) {
       $("#tag").append(data.key);
 
