@@ -5,8 +5,6 @@ from connected import views
 from django.contrib import admin
 admin.autodiscover()
 
-member_resource = MemberResource()
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'connected.views.home', name='home'),
