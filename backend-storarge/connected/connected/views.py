@@ -1,16 +1,19 @@
-from django.template import RequestContext
-from django.core.context_processors import csrf
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from app_connected.models import Member, Login
+from django.template import RequestContext
+from django.forms import RegistrationForm
 
-def index(request):
-    return render_to_response('app_connected/index.html')
-
-def login(request):
-     if request == 'POST':
-        return render_to_response('app_connected/menu.html')
-     else:
-        return render_to_response('app_connected/login.html')
+def MemberRegistration(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/profile/')
+        # Let's maybe come back to this. What is a good url to redirect to?
+    if request.method == 'POST':
+        pass
+    else:
+        form = RegistrationForm()
+        context = { 'form': form }
+        return render_to_response('register.html', context,
+                context_instance=RequestContext(request))
 
 def loop(request, member_id):
     members = Member.objects.get(id=member_id)
