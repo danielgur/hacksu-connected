@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     (r'^myinfo/(\d+)/$', views.myinfo),
     (r'^register/$', 'views.MemberRegistration'),
 
+
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
 )

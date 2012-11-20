@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.forms import RegistrationForm
+from django.forms import ModelForm
 
 def MemberRegistration(request):
     if request.user.is_authenticated():
