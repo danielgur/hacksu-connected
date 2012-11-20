@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'^menu/$', views.menu),
     (r'^bump/$', views.bump),
     (r'^myinfo/(\d+)/$', views.myinfo),
-    (r'^register/$', 'views.MemberRegistration'),
+    (r'^register/$', views.MemberRegistration),
 
 
     # Uncomment the next line to enable the admin:
