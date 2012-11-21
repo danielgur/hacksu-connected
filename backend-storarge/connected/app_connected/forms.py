@@ -5,11 +5,17 @@ from app_connected.models import Member
 
 
 class RegistrationForm(ModelForm):
+    name = forms.CharField(label = (u'Name'))
     username = forms.CharField(label = (u'User Name'))
     email = forms.EmailField(label = (u'Email Address'))
     password = forms.CharField(label = (u'Password'), widget=forms.PasswordInput(render_value=False))
     password1 = forms.CharField(label = (u'Verify Password'), widget=forms.PasswordInput(render_value=False))
+    phone_number = forms.CharField(label = (u'Phone number'))
+    facebook = forms.CharField(label = (u'Facebook'))
+    twitter = forms.CharField(label = (u'Twitter'))
+    bio = forms.CharField(label = (u'Bio'), widget=forms.Textarea)
 
+    
     class Meta:
         model = Member
         exclude = ('user',)

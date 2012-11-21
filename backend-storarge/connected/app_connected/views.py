@@ -18,7 +18,7 @@ def MemberRegistration(request):
         if form.is_valid():
             user = User.objects.create_user(username = form.cleaned_data['username'], email = form.cleaned_data['email'], password = form.cleaned_data['password'])
             user.save()
-            member = Member(user=user, name = form.cleaned_data['name'])
+            member = Member(user=user, name = form.cleaned_data['name'], email = form.cleaned_data['email'], twitter = form.cleaned_data['twitter'], facebook = form.cleaned_data['facebook'], bio = form.cleaned_data['bio'], phone_number = form.cleaned_data['phone_number'])
             member.save()
             return HttpResponseRedirect('/menu/')
         else:

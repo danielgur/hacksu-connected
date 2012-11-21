@@ -6,14 +6,14 @@
         {% csrf_token %}
         {% if form.errors %} <p> Please correct the following fields:</p> {% endif %}
         <div class="register_div">
+                {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
+                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Name:</label></p>
+                <p>{{ form.name }}</p>
+        </div>
+        <div class="register_div">
                 {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
                 <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
                 <p>{{ form.username }}</p>
-        </div>
-        <div class="register_div">
-                {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
-                <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label></p>
-                <p>{{ form.email }}</p>
         </div>
         <div class="register_div">
                 {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
@@ -26,11 +26,31 @@
                 <p>{{ form.password1 }}</p>
         </div>
         <div class="register_div">
-                {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
-                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Name:</label></p>
-                <p>{{ form.name }}</p>
+                {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
+                <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label></p>
+                <p>{{ form.email }}</p>
         </div>
-        <p><input type="submit" value="Register me"  alt="register" /></p>
+        <div class="register_div">
+                {% if form.phone_number.errors %}<p class="error">{{ form.phone_number.errors }}</p>{% endif %}
+                <p><label for="phone_number"{% if form.phone_number.errors %} class="error"{% endif %}>Phone number:</label></p>
+                <p>{{ form.phone_number }}</p>
+        </div>
+        <div class="register_div">
+                {% if form.facebook.errors %}<p class="error">{{ form.facebook.errors }}</p>{% endif %}
+                <p><label for="facebook"{% if form.facebook.errors %} class="error"{% endif %}>Facebook:</label></p>
+                <p>{{ form.facebook }}</p>
+        </div>
+        <div class="register_div">
+                {% if form.twitter.errors %}<p class="error">{{ form.twitter.errors }}</p>{% endif %}
+                <p><label for="twitter"{% if form.twitter.errors %} class="error"{% endif %}>Twitter:</label></p>
+                <p>{{ form.twitter }}</p>
+        </div>
+        <div class="register_div">
+                {% if form.bio.errors %}<p class="error">{{ form.bio.errors }}</p>{% endif %}
+                <p><label for="bio"{% if form.bio.errors %} class="error"{% endif %}>About you (elevator speech):</label></p>
+                <p>{{ form.bio }}</p>
+        </div>
+        <p><input type="submit" value="Get me in the Loop"  alt="register" /></p>
 </form>
 {% endblock %}
 
