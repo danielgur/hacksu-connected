@@ -10,16 +10,18 @@
 
 	<body>
                 <div data-role="page" data-theme="c">
-                        <div data-role="header">
-                                <h1>
-                                {% if user.is_authenticated %} <a href="/logout" class="ui-btn-left" data-role="button" >Logout</a> {% endif %}
-                                </h1>
+                        <div>
+				<div style="text-align:center; background-color:#ce1f3c; height:40px;">
+                                        {% if user.is_authenticated %} <a href="/logout" class="ui-btn-left" data-role="button" >Logout</a> {% endif %}
+                                        <!--<a href="/logout" data-role="button"
+                                                data-icon="delete"
+                                                data-mini="true" style=
+                                                float:left;">Logout</a> -->
+                                        <img src="/static/img/Loop.png" style="height:45px;" />
+                                </div>
                         </div>
-			<div data-role="content">
+                        <div data-role="content" style="clear:left;">
 				<div>
-					<div style="text-align:center;">
-						<img src="/static/img/LoopHeader2.png" style="max-width:100%" />
-					</div>
                                         {% block content %}{% endblock %}
 				</div>
 			</div>
