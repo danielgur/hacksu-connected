@@ -7,10 +7,8 @@ from app_connected.models import Member
 class RegistrationForm(ModelForm):
     username = forms.CharField(label = (u'User Name'))
     email = forms.EmailField(label = (u'Email Address'))
-    password = forms.CharField(label = (u'Password'),
-            widget=forms.PasswordInput(render_value=False))
-    password1 = forms.CharField(label=(u'Verify Password'),
-            widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(label = (u'Password'), widget=forms.PasswordInput(render_value=False))
+    password1 = forms.CharField(label = (u'Verify Password'), widget=forms.PasswordInput(render_value=False))
 
     class Meta:
         model = Member
@@ -26,7 +24,12 @@ class RegistrationForm(ModelForm):
 
     def clean(self):
         if self.cleaned_data['password'] != self.cleaned_data['password1']:
-            raise Forms.ValidationError("The passwords you input did not match. Please try again.")
+            raise forms.ValidationError("The passwords you input did not match. Please try again.")
         return self.cleaned_data
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label = (u'User Name'))
+    password = forms.CharField(label = (u'Password'), widget=forms.PasswordInput(render_value=False))
+
 
 

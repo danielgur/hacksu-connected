@@ -1,31 +1,20 @@
-<html>
-	<head>
-		<title>Connected.</title>
-		<meta name="viewport" content="width-device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" /> 
-		<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-		<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	</head>
 
-	<body>
-		<div data-role="page" id="login" data-theme="c">
-			<div data-role="header">
-				<div style="text-align:center;">
-					<img src="/static/img/LoopHeader2.png" style="max-width:100%" />
-				</div>
-			</div>
-			<div data-role="content">
-				<div data-role="controlgroup">
-   				<form action="/login/" method="POST" data-ajax="false" > {% csrf_token %}
-					<label for="basic">Username:</label>
-    				<input type="text" name="username" id="username" value=""  />
-    				<label for="basic">Password:</label>
-    				<input type="password" name="password" id="password" value=""  />
-    				<input type="submit" value="Login" />
-    			</form>
-    			</div>
-    		</div>
-		</div>
-	</body>
+{% extends "app_connected/base.html" %}
 
-</html>
+{% block content %}
+<form action="" method="post" >
+  {% csrf_token %}
+  {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
+  {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
+  <label for="username" {% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
+  <p>{{ form.username }}</p>
+  {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
+  <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>
+  <p>{{ form.password }}</p>
+  <p><input type="submit" value="Login" alt="register" /></p>
+</form>
+
+<p><a href="/register/" data-role="button">Sign Up</a></p>
+<p>Forgot your password? <a href="/resetpassword/">Reset it!</a></p>
+
+{% endblock %}
