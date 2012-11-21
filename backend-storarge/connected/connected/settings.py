@@ -7,6 +7,8 @@ import django
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+AUTH_PROFILE_MODULE = 'app_connected.Member'
+
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )

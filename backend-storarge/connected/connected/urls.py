@@ -1,8 +1,8 @@
 from django.conf.urls import patterns, include, url
+from django.contrib import admin
 from connected import views
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     (r'^menu/$', views.menu),
     (r'^bump/$', views.bump),
     (r'^myinfo/(\d+)/$', views.myinfo),
-    (r'^register/$', views.MemberRegistration),
+    (r'^register/$', 'app_connected.views.MemberRegistration'),
 
 
     # Uncomment the next line to enable the admin:
