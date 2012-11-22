@@ -11,7 +11,6 @@ from django.contrib.auth import authenticate, login, logout
 def MemberRegistration(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/menu/')
-        # Let's maybe come back to this. What is a good url to redirect to?
 
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -37,9 +36,9 @@ def LoginRequest(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            member = authenticate(username=username, password=password)
-            if member is not None:
-                login(request, member)
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
                 return HttpResponseRedirect('/menu/')
             else:
                 return render_to_response('app_connected/login.html', {'form':form}, context_instance=RequestContext(request))

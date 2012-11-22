@@ -2,10 +2,11 @@
 
 {% block content %}
 <div data-role="controlgroup">
-	<ul data-role="listview" data-inset="true">
-		<li><a href="">Tie-in</a></li>
-		<li><a href="">My Info</a></li>
-	  <li><a href="">Loops</a></li>
-  </ul>
+        <p>Welcome, {{ member.name }}. Thanks for logging in.</p>
+        <ul data-role="listview" data-inset="true">
+                <li><a href="/bump/">Bump</a></li>
+                <li><a href="/myinfo/">My Info</a></li>
+	        <li><a href="/loop/">Loops</a></li>
+        </ul>
 </div>
 {% endblock %}
