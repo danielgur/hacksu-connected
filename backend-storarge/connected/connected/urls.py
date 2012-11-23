@@ -14,10 +14,10 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     (r'^$', 'app_connected.views.LoginRequest'),
-    (r'^loop/(\d+)/$', views.loop),
+    (r'^loop/$', views.loop),
     (r'^menu/$', views.menu),
     (r'^bump/$', views.bump),
-    (r'^myinfo/(\d+)/$', views.myinfo),
+    (r'^myinfo/$', views.myinfo),
     (r'^register/$', 'app_connected.views.MemberRegistration'),
 
 
